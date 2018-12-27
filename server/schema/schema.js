@@ -15,17 +15,20 @@ const books = [
 	{
 		name: "Harry Potter and the Sorcerer's Stone",
 		genre: 'Fantasy',
-		id: '1'
+		id: '1',
+		authorId: '1'
 	},
 	{
 		name: 'Harry Potter and the Chamber of Secrets',
 		genre: 'Fantasy',
-		id: '2'
+		id: '2',
+		authorId: '1'
 	},
 	{
 		name: 'Harry Potter and the Prisoner of Azkaban',
 		genre: 'Fantasy',
-		id: '3'
+		id: '3',
+		authorId: '1'
 	}
 ];
 
@@ -38,7 +41,14 @@ const BookType = new GraphQLObjectType({
 	fields: () => ({
 		id: { type: GraphQLID },
 		name: { type: GraphQLString },
-		genre: { type: GraphQLString }
+		genre: { type: GraphQLString },
+		authorId: {
+			type: AuthorType,
+			resolve(parent, args) {
+				// parent is the book
+				return _.find(authors, { id: parent.authorId });
+			}
+		}
 	})
 });
 

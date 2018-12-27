@@ -2,7 +2,7 @@ const graphql = require('graphql');
 const _ = require('lodash');
 
 // define object type. pay attention to the capitalization
-const { GraphQLObjectType, GraphQLString, GraphQLSchema } = graphql;
+const { GraphQLObjectType, GraphQLString, GraphQLSchema, GraphQLID } = graphql;
 
 //dummy data
 const books = [
@@ -28,7 +28,7 @@ const BookType = new GraphQLObjectType({
 	name: 'Book',
 	// function to reference types
 	fields: () => ({
-		id: { type: GraphQLString },
+		id: { type: GraphQLID },
 		name: { type: GraphQLString },
 		genre: { type: GraphQLString }
 	})
@@ -41,7 +41,7 @@ const RootQuery = new GraphQLObjectType({
 		book: {
 			type: BookType,
 			// decide which specific book to land on, book(id: '123')
-			args: { id: { type: GraphQLString } },
+			args: { id: { type: GraphQLID } },
 			//code to get data from db or other source
 			resolve(parent, args) {
 				return _.find(books, { id: args.id });

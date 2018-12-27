@@ -1,5 +1,7 @@
 const graphql = require('graphql');
 const _ = require('lodash');
+const Book = require('../models/book');
+const Author = require('../models/author');
 
 // define object type. pay attention to the capitalization
 const {
@@ -12,28 +14,28 @@ const {
 } = graphql;
 
 //dummy data
-const books = [
-	{
-		name: "Harry Potter and the Sorcerer's Stone",
-		genre: 'Fantasy',
-		id: '1',
-		authorId: '1'
-	},
-	{
-		name: 'Harry Potter and the Chamber of Secrets',
-		genre: 'Fantasy',
-		id: '2',
-		authorId: '1'
-	},
-	{
-		name: 'Harry Potter and the Prisoner of Azkaban',
-		genre: 'Fantasy',
-		id: '3',
-		authorId: '1'
-	}
-];
+// const books = [
+// 	{
+// 		name: "Harry Potter and the Sorcerer's Stone",
+// 		genre: 'Fantasy',
+// 		id: '1',
+// 		authorId: '1'
+// 	},
+// 	{
+// 		name: 'Harry Potter and the Chamber of Secrets',
+// 		genre: 'Fantasy',
+// 		id: '2',
+// 		authorId: '1'
+// 	},
+// 	{
+// 		name: 'Harry Potter and the Prisoner of Azkaban',
+// 		genre: 'Fantasy',
+// 		id: '3',
+// 		authorId: '1'
+// 	}
+// ];
 
-const authors = [{ name: 'J.K. Rowling', age: 53, id: '1' }];
+// const authors = [{ name: 'J.K. Rowling', age: 53, id: '1' }];
 
 // define a schema, how a graph will look
 const BookType = new GraphQLObjectType({

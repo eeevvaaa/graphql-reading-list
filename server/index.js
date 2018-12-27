@@ -9,8 +9,9 @@ const app = express();
 app.use(
 	'/graphql',
 	graphqlHTTP({
-		// schema: schema
-		schema
+		// schema: schema is the same as below
+		schema,
+		graphiql: true
 	})
 );
 

@@ -1,7 +1,27 @@
 const graphql = require('graphql');
+const _ = require('lodash');
 
 // define object type. pay attention to the capitalization
 const { GraphQLObjectType, GraphQLString, GraphQLSchema } = graphql;
+
+//dummy data
+const books = [
+	{
+		name: "Harry Potter and the Sorcerer's Stone",
+		genre: 'Fantasy',
+		id: '1'
+	},
+	{
+		name: 'Harry Potter and the Chamber of Secrets',
+		genre: 'Fantasy',
+		id: '2'
+	},
+	{
+		name: 'Harry Potter and the Prisoner of Azkaban',
+		genre: 'Fantasy',
+		id: '3'
+	}
+];
 
 // define a schema, how a graph will look
 const BookType = new GraphQLObjectType({
@@ -24,7 +44,7 @@ const RootQuery = new GraphQLObjectType({
 			args: { id: { type: GraphQLString } },
 			//code to get data from db or other source
 			resolve(parent, args) {
-				args.id;
+				return _.find(books, { id: args.id });
 			}
 		}
 	}

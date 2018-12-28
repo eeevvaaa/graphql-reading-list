@@ -5,7 +5,7 @@ const bookSchema = new Schema({
 	// mongoDB generates id
 	name: String,
 	genre: String,
-	authodId: String
+	authorId: String
 });
 
 // model - collection

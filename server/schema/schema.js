@@ -34,7 +34,6 @@ const {
 // 		authorId: '1'
 // 	}
 // ];
-
 // const authors = [{ name: 'J.K. Rowling', age: 53, id: '1' }];
 
 // define a schema, how a graph will look
@@ -121,6 +120,22 @@ const Mutation = new GraphQLObjectType({
 					age: args.age
 				});
 				return author.save();
+			}
+		},
+		addBook: {
+			type: BookType,
+			args: {
+				name: { type: GraphQLString },
+				genre: { type: GraphQLString },
+				authorId: { type: GraphQLID }
+			},
+			resolve(parent, args) {
+				let book = new Book({
+					name: args.name,
+					genre: args.genre,
+					authorId: args.authorId
+				});
+				return book.save();
 			}
 		}
 	}

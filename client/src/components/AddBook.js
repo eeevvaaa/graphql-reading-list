@@ -18,7 +18,13 @@ class AddBook extends Component {
 
 	handleSumbit = e => {
 		e.preventDefault();
-		this.props.addBookMutation();
+		this.props.addBookMutation({
+			variables: {
+				name: this.state.name,
+				genre: this.state.genre,
+				authorId: this.state.authorId
+			}
+		});
 	};
 
 	displayAuthors() {
@@ -37,7 +43,7 @@ class AddBook extends Component {
 	}
 	render() {
 		return (
-			<form className="add-book">
+			<form className="add-book" onSubmit={this.handleSumbit}>
 				<div className="field">
 					<label>Book name:</label>
 					<input type="text" name="name" onChange={this.handleInput} />
@@ -53,7 +59,7 @@ class AddBook extends Component {
 						{this.displayAuthors()}
 					</select>
 				</div>
-				<button onSubmit={this.handleSumbit}>+</button>
+				<button>+</button>
 			</form>
 		);
 	}

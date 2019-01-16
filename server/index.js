@@ -5,6 +5,7 @@ const schema = require('./schema/schema');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const port = process.env.PORT || 4000;
+const mongodb_uri = process.env.MONGODB_URI;
 
 const app = express();
 
@@ -12,7 +13,7 @@ const app = express();
 app.use(cors());
 
 // connet to mlab database
-mongoose.connect('mongodb://user:test123@ds111963.mlab.com:11963/gql-rdg-ls');
+mongoose.connect(mongodb_uri);
 mongoose.connection.once('open', () => {
 	console.log('\n--- Connected to database ---');
 });

@@ -8,7 +8,7 @@ import AddBook from './components/AddBook';
 
 // apollo client setup
 const client = new ApolloClient({
-	uri: 'https://lit-ocean-99278.herokuapp.com/graphql'
+	uri: 'https://fathomless-atoll-31345.herokuapp.com/graphql'
 });
 
 class App extends Component {

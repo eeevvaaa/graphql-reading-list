@@ -1,3 +1,4 @@
+require('dotenv').config({ path: '.env' });
 const express = require('express');
 // convention for GraphQL where the variable does not match the name of the package.
 const graphqlHTTP = require('express-graphql');
@@ -12,9 +13,16 @@ const app = express();
 app.use(cors());
 
 // connet to mlab database
-mongoose.connect(process.env.MONGODB_URI);
+mongoose.connect(
+	process.env.MONGODB_URI,
+	{ useNewUrlParser: true }
+);
 mongoose.connection.once('open', () => {
 	console.log('\n--- Connected to database ---');
+});
+
+app.get('/', (req, res) => {
+	res.json('！*★,°*:.☆(￣▽￣)/$:*.°★* 。');
 });
 
 // middleware

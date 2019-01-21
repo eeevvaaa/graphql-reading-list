@@ -4,8 +4,11 @@
 	"main": "index.js",
 	"license": "MIT",
 	"scripts": {
-		"start": "nodemon index.js",
+		"start": "node index.js",
 		"test": "jest --watch --verbose"
+	},
+	"engines": {
+		"node": "10.x"
 	},
 	"dependencies": {
 		"cors": "^2.8.5",

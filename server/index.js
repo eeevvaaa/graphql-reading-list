@@ -21,8 +21,8 @@ mongoose.connection.once('open', () => {
 	console.log('\n--- Connected to database ---');
 });
 
-app.get('/', (req, res) => {
-	res.json('！*★,°*:.☆(￣▽￣)/$:*.°★* 。');
+app.get('/', function(req, res) {
+	res.redirect('/graphql');
 });
 
 // middleware
